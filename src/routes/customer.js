@@ -8,4 +8,7 @@ router.get('/update/:id', customerController.edit);
 router.post('/update/:id', customerController.update);
 router.get('/delete/:id', customerController.delete);
 
+//router.post('/update/:id', customerController.update);
+router.get('/resume/:id', customerController.resume);
+
 module.exports = router;

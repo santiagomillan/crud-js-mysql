@@ -1,5 +1,5 @@
 <%- include('partials/_header'); -%>
-<pre><%= data[0].name%></pre>
+
 
 
 <div class="container">
@@ -9,9 +9,9 @@
                 <thead>
                     <tr>
                         <th>N°</th>
-                        <th>Nombre</th>
-                        <th>Direccion</th>
-                        <th>Telefono</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Fecha</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -21,11 +21,13 @@
                             <tr>
                                 <td><%= (i + 1) %></td>
                                 <td><%= data[i].name %> </td>
-                                <td><%= data[i].address %> </td>
-                                <td><%= data[i].phone %> </td>
+                                
+                                <td><%= data[i].cantidad %> </td>
+                                <td><%= data[i].fechaI+"/ "+data[i].fechaf %> </td>
                                 <td>
                                     <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Eliminar</a>
-                                    <a href="/update/<%= data[i].id %>" class="btn btn-info"> Editar </a>
+                                    <a href="/update/<%= data[i].id %>" class="btn btn-info">Notificar</a>
+                                    <a href="/resume/<%= data[i].id %>" class="btn btn-success">Resumen</a>
                                 </td>                           
                             </tr>
                         <% } %>
@@ -40,17 +42,137 @@
             <div class="card">
                 <div class="card-body">
                     <form action="/add" method="POST">
+                        
                         <div class="form-group">
+                            <!-- <input type="text" name="" placeholder="Nombre" class="form-control"> -->
+                            <label for="">Producto:</label>
+
+                                <select id="name"  class="name" name="name"  >
+                                    <option value="0"></option>
+                                    <option value="Gomitas">Gomitas</option>
+                                    <option value="Frunas">Frunas</option>
+                                    <option value="Galletas">Galletas</option>
+                                    <option value="Sparkies">Sparkies</option>
+                                    <option value="BomBom-Bum">BomBom-Bum</option>
+                                </select>                                
+        
+                        </div>
+
+                        <div class="form-group">
+                            
+                            <input type="textpage" name="cantidad" placeholder="Cantidad" id="cantidad" >
+                            <script>
+                                // var val = document.getElementsByName("values");
+                                // 
+                                //console.log(val);
+                                // var select = document.getElementById("name"), //El <select>
+                                //     value = select.value, //El valor seleccionado
+                                //     text = select.options[select.selectedIndex].options; 
+                                
+                                // if (text == "gomitas") {        
+                                //     console.log("10000000000")
+                                //     document.getElementById('cantidad').value=Text;
+                                // }
+                                // var select = document.getElementById("name");
+                                // var selectedOperation = select.options[select.selectedIndex].value;
+                                // console.log(select);
+                                // console.log(selectedOperation);
+                                
+                                // document.getElementById('cantidad').selectedOperation=Text;
+                                
+                                // var dd=document.getElementById("name").value = selected;
+                                // console.log(dd);
+                                //var objetivo = document.getElementById('cantidad');
+                                //objetivo.innerHTML = fechacompleta;
+
+                                var select = document.getElementById('name');
+                                select.addEventListener('change',
+                                function(){
+                                    var selectedOption = this.options[select.selectedIndex];
+                                    var dd = selectedOption.value;
+                                    console.log(selectedOption.value + ': ' + selectedOption.text);
+
+                                    if(dd=="Gomitas"){
+                                        document.getElementById('cantidad').value=1000;
+                                    }
+                                    if(dd=="Frunas"){
+                                        document.getElementById('cantidad').value=300;
+                                    }
+                                    if(dd=="Galletas"){
+                                        document.getElementById('cantidad').value=200;
+                                    }
+                                    if(dd=="Sparkies"){
+                                        document.getElementById('cantidad').value=2000;
+                                    }
+                                    if(dd=="BomBom-Bum"){
+                                        document.getElementById('cantidad').value=800;
+                                    }
+                                    if(dd=="0"){
+                                        document.getElementById('cantidad').value="error";
+                                    }
+                                    
+                                });
+                                
+                            </script>
+
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Hora: </label>
+                            <!-- <input id="texto_nav1" name="fechaI" value="texto_nav1"disabled> -->
+                            <!-- <input type="datetime" type="datetime" name="fechaI" id="fechaI">  -->
+                            <!-- <input type="date" name="fechaI" id="fechacompleta"> -->
+                            <!-- <script language="javascript" name="fechaI">
+                                var fecha = new Date();
+                                var dia = fecha.getDate();
+                                var mes = fecha.getMonth() + 1;
+                                var ano = fecha.getFullYear();
+                                var fechacompleta = dia+"/"+mes+"/"+ano;
+                                var objetivo = document.getElementById('texto_nav1');
+                                objetivo.innerHTML = fechacompleta;
+                                </script> -->
+                                <input class="timepage" size="8" id="timespent" name="fechaI"><br>
+                                <script>
+                                    var fecha1 = new Date().getHours();
+                                    var fecha2 = new Date().getMinutes();
+                                    var fecha3 = new Date().getSeconds();
+                                    var fechacompleta = fecha1+":"+fecha2+":"+fecha3;
+                                    document.getElementById('timespent').value=fechacompleta;
+                                    // var objetivo = document.getElementById('timespent');
+                                    //objetivo.innerHTML = fechacompleta;
+                                </script>
+                        </div>
+                        <!-- <div class="form-group">
                             <input type="text" name="name" placeholder="Nombre" class="form-control">
+                        </div> -->
+                        <!-- <div class="form-group">
+                            <input type="date" type="date" name="fechaI">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="address" placeholder="Direccion" class="form-control">
+                            <input type="text" name="cantidad" placeholder="Nombre" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="number" name="phone" placeholder="Numero" class="form-control">
+                            <input type="text" name="operario" placeholder="Nombre" class="form-control">
                         </div>
+                        <div class="form-group">
+                            <input type="text" name="piezasb" placeholder="Nombre" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="piezasm" placeholder="Nombre" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="fechaf" placeholder="Nombre" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="Gastos" placeholder="Nombre" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="Observa" placeholder="Nombre" class="form-control">
+                        </div> -->
                         <button type="submit" class="btn btn-primary">
                             Guardar Cliente
+                            
                         </button>
                     </form>
                 </div>

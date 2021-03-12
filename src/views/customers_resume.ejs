@@ -7,30 +7,49 @@
         <form action="/update/<%= data.id %>" method="POST">
 
           <div class="form-group">
-            <input type="text" name="name" value="<%= data.name%>" placeholder="Producto" class="form-control" disabled>
+            <label for="">ID: </label>
+            <input type="text" name="name" value="<%= data.id%>" placeholder="Producto" class="form-control" disabled>
           </div>
 
+
+          <div class="form-group">
+            <label for="">Producto: </label>
+            <input type="text" name="name" value="<%= data.name%>" placeholder="Producto" class="form-control" disabled>
+          </div>
+          
+          <div class="form-group">
+            <label for="">Fecha Creacion: </label>
+            <input type="text" name="" value="<%= data.fechaI%>" placeholder="" id="" class="" disabled>
+        </div>
                 <!-- <div class="form-group">
                     <input type="timepage" name="fechaI" type="<%= data.fechaI%>" name="fechaI" placeholder="Fecha" class="form-control">
                 </div> -->
                 <div class="form-group">
-                    <input type="text" name="cantidad" value="<%= data.cantidad%>" placeholder="Cantidad"  id="cantidad" class="form-control">
+                  <label for="">Cantidad: </label>
+                    <input type="text" name="cantidad" value="<%= data.cantidad%>" placeholder="Cantidad"  id="cantidad" class="form-control"disabled>
                     
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group" >
                     <!-- <input type="text" name="operario" value="<%= data.operario%>" placeholder="Operario" class="form-control" autofocus> -->
-                    <label for="" >Operario:</label>
+                    <!-- <label for="" >Operario:</label>
 
                                 <select id="operario"  class="operario" name="operario" class="form-control" >
                                     <option value="0"></option>
                                     <option value="Carlos">Carlos</option>
                                     <option value="Rafael">Rafael</option>
-                                    <option value="Viviana">Viviana</option>
+                                    <option value="Viviana">Viviana</option> -->
                                     
-                                </select>   
-                </div>
+                                <!-- </select>    --> 
+                <!-- </div> -->
+
                 <div class="form-group">
-                    <input type="text" name="piezasb" value="<%= data.piezasb%>" placeholder="Piezas Bien" id="piezasb" class="form-control">
+                  <label for="">Operario: </label>
+                  <input type="text" name="cantidad" value="<%= data.operario%>" placeholder="Cantidad"  id="cantidad" class="form-control"disabled>
+              </div>
+
+                <div class="form-group">
+                  <label for="">Productos bien: </label>
+                    <input type="text" name="piezasb" value="<%= data.piezasb%>" placeholder="Piezas Bien" id="piezasb" class="form-control" disabled>
                     <script>
                       //   var select =  document.getElementById('piezasb');
                         
@@ -57,14 +76,16 @@
 
                 </div>
                 <div class="form-group">
-                    <input type="text" name="piezasm" value="<%= data.piezasm%>" placeholder="Piezas Mal" id="piezasm" class="form-control">
+                  <label for="">Productos mal: </label>
+                    <input type="text" name="piezasm" value="<%= data.piezasm%>" placeholder="Piezas Mal" id="piezasm" class="form-control" disabled>
                 </div>
                                 
                     
                 
                 <div class="form-group">
+                  <label for="">Fecha Final: </label>
                     <!-- <input type="text" name="fechaf" value="<%= data.fechaf%>" placeholder="Nombre" class="form-control"> -->
-                    <input class="timepage" size="5" id="timespent" name="fechaf"><br>
+                    <input class="timepage" size="8" id="timespent" name="fechaf" disabled><br>
                                 <script>
                                     var fecha1 = new Date().getHours();
                                     var fecha2 = new Date().getMinutes();
@@ -76,13 +97,15 @@
                                 </script>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="Gastos" value="<%= data.Gastos%>" placeholder="Gastos" class="form-control">
+                  <label for="">Gastos Extra: </label>
+                    <input type="text" name="Gastos" value="<%= data.Gastos%>" placeholder="Gastos" class="form-control" disabled>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="Observa" value="<%= data.Observa%>" placeholder="Observaciones" class="form-control">
+                  <label for="">Observaciones: </label>
+                    <input type="text" name="Observa" value="<%= data.Observa%>" placeholder="Observaciones" class="form-control" disabled>
                 </div>
-          <button type="submit" class="btn btn-primary">
-            save 
+          <button type="menu" class="btn btn-primary">
+            Home
           </button>
         </form>
       </div>

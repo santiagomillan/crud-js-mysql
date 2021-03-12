@@ -1,0 +1,64 @@
+<%- include('partials/_header'); -%>
+<pre><%= data%></pre>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                        <th>Fecha</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(data){ %>
+                        <% for(var i=0; i < data.length; i++) {%>
+                            <tr>
+                                <td><%= (i + 1) %></td>
+                                <td><%= data[i].id %> </td>
+                                <td><%= data[i].name %> </td>
+                                <td><%= data[i].Cantidad %> </td>
+                                <td><%= data[i].Fecha %> </td>
+                                <td>
+                                    <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Eliminar</a>
+                                    <a href="/update/<%= data[i].id %>" class="btn btn-info"> Editar </a>
+                                </td>                           
+                            </tr>
+                        <% } %>
+                    <%  } %>
+                </tbody>
+            </table>
+
+
+        </div>
+        <div class="col-md-5">
+
+            <div class="card">
+                <div class="card-body">
+                    <form action="/add" method="POST">
+                         <div class="form-group">
+                            <input type="text" name="name" placeholder="Codigo del producto" class="form-control">
+                            
+
+                        </div>
+
+
+
+                        <button type="submit" class="btn btn-primary">
+                            Guardar
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<script src="../controllers/log.js"></script>
+
+<%- include('partials/_footer'); -%>
